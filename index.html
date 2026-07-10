@@ -439,6 +439,7 @@ const PLATE_COLOR = {45:'#c7a252',35:'#4c82b0',25:'#6f9e76',10:'#8b9299',5:'#b05
 const SUPABASE_URL = 'https://ukeytjmlhhkyyudhzigh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_e-vRbemFfjrQrXjvsJ-1tA_-ELHIfna';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const BUILD_TAG = '2026-07-10-2 (dynamic island fix)';
 
 let program = null;
 let logs = null; // { sessions: [ {id,date,dayId,entries:{exId:[{w,r}]}} ] }
@@ -870,6 +871,7 @@ function renderProgramEditor(){
     <button class="add-ex-btn" id="importBtn" style="margin-top:8px;">⬆ Restore from backup</button>
     <input type="file" id="importFile" accept="application/json" style="display:none">
     <div class="brand-sub" style="margin-top:8px; text-align:center;">Your data syncs to the cloud automatically. Export a backup anytime as an extra safety net.</div>
+    <div class="brand-sub" style="margin-top:14px; text-align:center; opacity:0.5;">Build ${BUILD_TAG}</div>
   `;
   document.getElementById('main').innerHTML = html;
   bindProgramEvents();
