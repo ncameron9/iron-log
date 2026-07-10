@@ -35,7 +35,9 @@
     font-family:'Inter',system-ui,sans-serif;
     -webkit-font-smoothing:antialiased;
     min-height:100vh;
+    text-transform:uppercase;
   }
+  input::placeholder{ text-transform:uppercase; }
   #app{
     max-width:520px;
     margin:0 auto;
@@ -123,7 +125,6 @@
     background:var(--surface);
     color:var(--muted);
     font-family:'Oswald',sans-serif;
-    font-weight:600;
     letter-spacing:0.04em;
     cursor:pointer;
     text-align:center;
@@ -131,19 +132,24 @@
   }
   .day-picker button .dname{
     display:block;
-    font-size:10px;
-    font-weight:400;
-    text-transform:none;
+    font-size:18px;
+    font-weight:600;
     letter-spacing:0;
     color:var(--muted);
-    margin-top:2px;
+    margin-bottom:2px;
+  }
+  .day-picker button .dletter{
+    display:block;
+    font-size:14px;
+    font-weight:400;
+    color:var(--muted);
   }
   .day-picker button.active{
     background:var(--accent-dim);
     border-color:var(--accent);
-    color:#f0d4d7;
   }
-  .day-picker button.active .dname{ color:#c98d95; }
+  .day-picker button.active .dname{ color:#f0d4d7; }
+  .day-picker button.active .dletter{ color:#c98d95; }
 
   .exercise-card{
     background:var(--surface);
@@ -448,7 +454,7 @@ const PLATE_DIM = {45:{w:14,h:34},35:{w:11.5,h:29},25:{w:9.5,h:24},10:{w:7.5,h:1
 const SUPABASE_URL = 'https://ukeytjmlhhkyyudhzigh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_e-vRbemFfjrQrXjvsJ-1tA_-ELHIfna';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const BUILD_TAG = '2026-07-10 17:39 CDT';
+const BUILD_TAG = '2026-07-10 18:25 CDT';
 
 let program = null;
 let logs = null; // { sessions: [ {id,date,dayId,entries:{exId:[{w,r}]}} ] }
@@ -606,7 +612,7 @@ function renderTrain(){
   ensureCurrentSets(day);
   let html = `<div class="day-picker">`;
   program.days.forEach(d=>{
-    html += `<button data-day="${d.id}" class="${d.id===activeDayId?'active':''}">${d.id}<span class="dname">${d.name}</span></button>`;
+    html += `<button data-day="${d.id}" class="${d.id===activeDayId?'active':''}"><span class="dname">${d.name}</span><span class="dletter">(${d.id})</span></button>`;
   });
   html += `</div>`;
 
