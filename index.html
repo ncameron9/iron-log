@@ -6,10 +6,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Iron Log">
+<meta name="apple-mobile-web-app-title" content="Forge">
 <meta name="theme-color" content="#14171a">
 <link rel="apple-touch-icon" href="icon-512.png">
-<title>IRON LOG</title>
+<title>FORGE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -419,7 +419,7 @@
 <body>
 <div id="app">
   <header class="top">
-    <div class="brand"><span>IRON</span><span class="dot">·</span><span>LOG</span></div>
+    <div class="brand"><span>FORGE</span></div>
     <div class="brand-sub" id="headerSub">3-day full body — muscle &amp; strength</div>
   </header>
   <main id="main"></main>
@@ -439,7 +439,7 @@ const PLATE_COLOR = {45:'#c7a252',35:'#4c82b0',25:'#6f9e76',10:'#8b9299',5:'#b05
 const SUPABASE_URL = 'https://ukeytjmlhhkyyudhzigh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_e-vRbemFfjrQrXjvsJ-1tA_-ELHIfna';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const BUILD_TAG = '2026-07-10 16:49 CDT';
+const BUILD_TAG = '2026-07-10 16:57 CDT';
 
 let program = null;
 let logs = null; // { sessions: [ {id,date,dayId,entries:{exId:[{w,r}]}} ] }
@@ -721,7 +721,7 @@ function exportData(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `iron-log-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.download = `forge-backup-${new Date().toISOString().slice(0,10)}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -744,7 +744,7 @@ function importDataFromFile(file){
       showToast('Backup restored.');
       renderActiveTab();
     }catch(e){
-      showToast('That file doesn\'t look like a valid Iron Log backup.');
+      showToast('That file doesn\'t look like a valid Forge backup.');
     }
   };
   reader.readAsText(file);
