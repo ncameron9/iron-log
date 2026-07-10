@@ -7,25 +7,25 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Forge">
-<meta name="theme-color" content="#14171a">
+<meta name="theme-color" content="#0a0a0b">
 <link rel="apple-touch-icon" href="icon-512.png">
 <title>FORGE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#14171a;
-    --surface:#1c2024;
-    --surface-2:#232830;
-    --line:#2e343b;
-    --text:#ece9e2;
-    --muted:#8b9299;
-    --accent:#4c82b0;
-    --accent-dim:#3a627f;
-    --gold:#c7a252;
-    --danger:#b0524c;
-    --success:#6f9e76;
-    --radius:10px;
+    --bg:#0a0a0b;
+    --surface:#131315;
+    --surface-2:#1a1a1d;
+    --line:#2a2a2d;
+    --text:#e7e7ea;
+    --muted:#7d7d83;
+    --accent:#c81e34;
+    --accent-dim:#2c1215;
+    --gold:#c81e34;
+    --danger:#a3222e;
+    --success:#4d7a52;
+    --radius:4px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -48,7 +48,7 @@
   header.top{
     padding:64px 18px 14px;
     border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg, #191d21, #14171a);
+    background:linear-gradient(180deg, #131315, #0a0a0b);
     position:sticky;
     top:0;
     z-index:10;
@@ -56,7 +56,7 @@
   .brand{
     font-family:'Oswald',sans-serif;
     font-weight:700;
-    letter-spacing:0.06em;
+    letter-spacing:0.09em;
     font-size:20px;
     text-transform:uppercase;
     display:flex;
@@ -66,9 +66,10 @@
   .brand .dot{ color:var(--gold); }
   .brand-sub{
     color:var(--muted);
-    font-size:12px;
+    font-size:11.5px;
     margin-top:2px;
-    letter-spacing:0.03em;
+    letter-spacing:0.02em;
+    font-family:'JetBrains Mono',monospace;
   }
   main{ flex:1; padding:16px 16px 20px; }
   .tabbar{
@@ -79,7 +80,7 @@
     max-width:520px;
     display:flex;
     border-top:1px solid var(--line);
-    background:#191d21;
+    background:#0a0a0b;
     z-index:20;
     padding-bottom:34px;
   }
@@ -140,9 +141,9 @@
   .day-picker button.active{
     background:var(--accent-dim);
     border-color:var(--accent);
-    color:#fff;
+    color:#f0d4d7;
   }
-  .day-picker button.active .dname{ color:#cfe0ee; }
+  .day-picker button.active .dname{ color:#c98d95; }
 
   .exercise-card{
     background:var(--surface);
@@ -158,8 +159,8 @@
     margin-bottom:2px;
   }
   .ex-name{ font-weight:600; font-size:15px; }
-  .ex-target{ color:var(--muted); font-size:12.5px; margin-top:1px;}
-  .ex-prev{ color:var(--gold); font-size:11.5px; margin-top:6px; font-variant-numeric:tabular-nums;}
+  .ex-target{ color:var(--muted); font-size:12px; margin-top:1px; font-family:'JetBrains Mono',monospace; letter-spacing:0.01em;}
+  .ex-prev{ color:var(--gold); font-size:11px; margin-top:6px; font-variant-numeric:tabular-nums; font-family:'JetBrains Mono',monospace;}
   .set-row{
     display:flex;
     align-items:center;
@@ -170,19 +171,20 @@
     width:20px;
     color:var(--muted);
     font-size:12px;
-    font-family:'Oswald',sans-serif;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;
     flex-shrink:0;
   }
   .set-row input{
     background:var(--surface-2);
     border:1px solid var(--line);
-    border-radius:7px;
+    border-radius:3px;
     color:var(--text);
     padding:8px 8px;
     font-size:14px;
     width:100%;
     font-variant-numeric:tabular-nums;
-    font-family:'Inter',sans-serif;
+    font-family:'JetBrains Mono',monospace;
   }
   .set-row input:focus{ outline:1px solid var(--accent); border-color:var(--accent); }
   .set-row .x{ color:var(--muted); font-size:12px; flex-shrink:0; }
@@ -190,7 +192,7 @@
   .set-row .done-check{
     width:22px; height:22px;
     flex-shrink:0;
-    border-radius:6px;
+    border-radius:3px;
     border:1px solid var(--line);
     background:var(--surface-2);
     cursor:pointer;
@@ -198,13 +200,13 @@
     color:var(--success);
     font-size:13px;
   }
-  .set-row .done-check.on{ background:rgba(111,158,118,0.18); border-color:var(--success); }
+  .set-row .done-check.on{ background:rgba(77,122,82,0.18); border-color:var(--success); }
   .add-set-btn{
     margin-top:8px;
     background:none;
     border:1px dashed var(--line);
     color:var(--muted);
-    border-radius:7px;
+    border-radius:3px;
     padding:6px 10px;
     font-size:12px;
     cursor:pointer;
@@ -212,45 +214,51 @@
 
   /* Plate diagram */
   .plate-viz{
-    margin-top:10px;
+    margin:10px auto 0;
     display:flex;
-    align-items:center;
+    align-items:flex-end;
     gap:0;
-    height:34px;
+    height:40px;
+    width:66%;
   }
-  .plate-viz .side{ display:flex; align-items:center; }
+  .plate-viz .side{ display:flex; align-items:flex-end; }
   .plate-viz .side.left{ flex-direction:row-reverse; }
   .plate-viz .bar{
-    height:5px;
-    background:#4a5158;
+    height:7px;
+    background:linear-gradient(180deg, #6e6f74 0%, #46474b 45%, #2b2c2f 100%);
     flex:1;
-    min-width:20px;
-    border-radius:2px;
+    min-width:16px;
+    border-radius:3px;
+    margin-bottom:14px;
   }
   .plate{
     border-radius:3px;
     margin:0 1px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#14171a;
-    font-size:8px;
-    font-weight:700;
-    font-family:'Oswald',sans-serif;
+    box-sizing:border-box;
+    border:1px solid rgba(0,0,0,0.5);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.3);
+  }
+  .collar{
+    border-radius:2px;
+    background:linear-gradient(180deg, #57595f 0%, #3a3b3f 50%, #232427 100%);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,0.4);
+    margin:0 1px 14px;
+    width:5px;
   }
   .plate-label{
     font-size:10.5px;
     color:var(--muted);
-    margin-top:3px;
+    margin-top:9px;
     text-align:center;
     font-variant-numeric:tabular-nums;
+    font-family:'JetBrains Mono',monospace;
   }
 
   .finish-btn{
     width:100%;
     padding:15px;
     background:var(--gold);
-    color:#14171a;
+    color:#f5e9ea;
     border:none;
     border-radius:var(--radius);
     font-family:'Oswald',sans-serif;
@@ -271,7 +279,7 @@
     border:1px solid var(--gold);
     color:var(--text);
     padding:10px 18px;
-    border-radius:8px;
+    border-radius:4px;
     font-size:13px;
     z-index:50;
     box-shadow:0 6px 20px rgba(0,0,0,0.4);
@@ -334,7 +342,7 @@
   .prog-ex-row{
     background:var(--surface);
     border:1px solid var(--line);
-    border-radius:8px;
+    border-radius:4px;
     padding:10px 12px;
     margin-bottom:8px;
   }
@@ -357,7 +365,7 @@
     width:44px;
     background:var(--surface-2);
     border:1px solid var(--line);
-    border-radius:5px;
+    border-radius:3px;
     color:var(--text);
     padding:5px;
     font-size:12px;
@@ -366,7 +374,7 @@
   .prog-ex-row select{
     background:var(--surface-2);
     border:1px solid var(--line);
-    border-radius:5px;
+    border-radius:3px;
     color:var(--text);
     padding:5px 4px;
     font-size:12px;
@@ -387,7 +395,7 @@
     background:none;
     border:1px dashed var(--line);
     color:var(--muted);
-    border-radius:8px;
+    border-radius:4px;
     font-size:12.5px;
     cursor:pointer;
     margin-top:2px;
@@ -434,12 +442,13 @@
 <script>
 const BAR_WEIGHT = 45;
 const PLATE_SIZES = [45,35,25,10,5,2.5];
-const PLATE_COLOR = {45:'#c7a252',35:'#4c82b0',25:'#6f9e76',10:'#8b9299',5:'#b0524c',2.5:'#c9cdd1'};
+const PLATE_COLOR = {45:'#100B0C',35:'#350F14',25:'#5A131C',10:'#7E1624',5:'#A31A2C',2.5:'#C81E34'};
+const PLATE_DIM = {45:{w:14,h:34},35:{w:11.5,h:29},25:{w:9.5,h:24},10:{w:7.5,h:19},5:{w:6,h:15},2.5:{w:5,h:12}};
 
 const SUPABASE_URL = 'https://ukeytjmlhhkyyudhzigh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_e-vRbemFfjrQrXjvsJ-1tA_-ELHIfna';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const BUILD_TAG = '2026-07-10 16:57 CDT';
+const BUILD_TAG = '2026-07-10 17:26 CDT';
 
 let program = null;
 let logs = null; // { sessions: [ {id,date,dayId,entries:{exId:[{w,r}]}} ] }
@@ -567,15 +576,18 @@ function plateVizHTML(weight){
   if(!plates.length){
     return `<div class="plate-label">Bar only (${BAR_WEIGHT} lb) — enter weight above ${BAR_WEIGHT} to see plates</div>`;
   }
+  const ascending = plates.slice().reverse();
+  const maxH = Math.max(...ascending.map(p=>PLATE_DIM[p].h));
+  const collar = `<div class="collar" style="height:${maxH+4}px;"></div>`;
   const mk = (arr)=>arr.map(p=>{
-    const h = 14 + (p/45)*16;
-    return `<div class="plate" style="width:${p>=25?10:7}px;height:${h}px;background:${PLATE_COLOR[p]}"></div>`;
-  }).join('');
+    const d = PLATE_DIM[p];
+    return `<div class="plate" style="width:${d.w}px;height:${d.h}px;background:${PLATE_COLOR[p]}"></div>`;
+  }).join('') + collar;
   return `
     <div class="plate-viz">
-      <div class="side left">${mk(plates)}</div>
+      <div class="side left">${mk(ascending)}</div>
       <div class="bar"></div>
-      <div class="side right">${mk(plates)}</div>
+      <div class="side right">${mk(ascending)}</div>
     </div>
     <div class="plate-label">${plates.join(', ')} lb per side + ${BAR_WEIGHT} lb bar</div>
   `;
