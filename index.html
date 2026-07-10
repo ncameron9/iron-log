@@ -437,7 +437,7 @@ const PLATE_COLOR = {45:'#c7a252',35:'#4c82b0',25:'#6f9e76',10:'#8b9299',5:'#b05
 
 const SUPABASE_URL = 'https://ukeytjmlhhkyyudhzigh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_e-vRbemFfjrQrXjvsJ-1tA_-ELHIfna';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let program = null;
 let logs = null; // { sessions: [ {id,date,dayId,entries:{exId:[{w,r}]}} ] }
@@ -486,7 +486,7 @@ function defaultProgram(){
 async function loadData(){
   let cloudProgram = null, cloudLogs = null;
   try{
-    const { data, error } = await supabase.from('app_state').select('key,data').in('key', ['program','logs']);
+    const { data, error } = await sb.from('app_state').select('key,data').in('key', ['program','logs']);
     if(error) throw error;
     (data||[]).forEach(row=>{
       if(row.key==='program') cloudProgram = row.data;
@@ -523,7 +523,7 @@ async function saveProgram(){
   try{ localStorage.setItem('ironlog_program', JSON.stringify(program)); }
   catch(e){ console.error('save program failed', e); showToast('Could not save — storage may be full or blocked.'); }
   try{
-    const { error } = await supabase.from('app_state').upsert({ key:'program', data: program, updated_at: new Date().toISOString() });
+    const { error } = await sb.from('app_state').upsert({ key:'program', data: program, updated_at: new Date().toISOString() });
     if(error) throw error;
   }catch(e){ console.warn('Cloud sync failed for program (saved locally):', e); showToast('Saved on this device — will sync when back online.'); }
 }
@@ -531,7 +531,7 @@ async function saveLogs(){
   try{ localStorage.setItem('ironlog_logs', JSON.stringify(logs)); }
   catch(e){ console.error('save logs failed', e); showToast('Could not save — storage may be full or blocked.'); }
   try{
-    const { error } = await supabase.from('app_state').upsert({ key:'logs', data: logs, updated_at: new Date().toISOString() });
+    const { error } = await sb.from('app_state').upsert({ key:'logs', data: logs, updated_at: new Date().toISOString() });
     if(error) throw error;
   }catch(e){ console.warn('Cloud sync failed for logs (saved locally):', e); showToast('Saved on this device — will sync when back online.'); }
 }
